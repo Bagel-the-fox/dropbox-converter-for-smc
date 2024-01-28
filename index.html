@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dropbox URL Converter</title>
+</head>
+<body>
+
+  <h1>Dropbox URL Converter</h1>
+
+  <label for="dropboxUrl">Enter Dropbox URL:</label>
+  <input type="text" id="dropboxUrl" placeholder="https://www.dropbox.com/somepath/somefile">
+  <button onclick="convertUrl()">Convert</button>
+
+  <p id="convertedUrl"></p>
+
+  <script>
+    function convertDropboxUrl(inputUrl) {
+      if (inputUrl.startsWith("https://www.dropbox.com/")) {
+        return inputUrl.replace("https://www.dropbox.com/", "https://www.dl.dropboxusercontent.com/");
+      } else {
+        return inputUrl;
+      }
+    }
+
+    function convertUrl() {
+      var inputElement = document.getElementById("dropboxUrl");
+      var convertedElement = document.getElementById("convertedUrl");
+
+      var inputDropboxUrl = inputElement.value;
+      var convertedUrl = convertDropboxUrl(inputDropboxUrl);
+
+      convertedElement.textContent = "Converted URL: " + convertedUrl;
+    }
+  </script>
+
+</body>
+</html>
